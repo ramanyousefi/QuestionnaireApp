@@ -39,21 +39,27 @@ const questions = {
 const currQuestion = document.getElementById("question");
 currQuestion.innerHTML = "Welcome!";
 let currNum = 0;
+
 function next() {
-  if (currNum >= 1 && currNum <= 36) {
+  if (currNum != 36 ) {
     currNum++;
     currQuestion.innerHTML = questions[currNum];
-  } else if (currNum == 0) {
-    currQuestion.innerHTML = questions[currNum + 1];
-    currNum++;
+    document.getElementById('next').style = "background-color: #03cae4;"
+
+  }
+  if(currNum == 36){
+    currQuestion.innerHTML = "End of the questions!";
+    document.getElementById('next').style = "background-color: #EBEBE4;"
   }
 }
 function back() {
-  if (currNum >= 1 && currNum <= 36) {
+  if (currNum != 1 && currNum !=0) {
     currNum--;
     currQuestion.innerHTML = questions[currNum];
-  } else if (currNum == 0 && currQuestion.innerHTML != "Welcome!") {
-    currQuestion.innerHTML = questions[currNum - 1];
-    currNum--;
+    document.getElementById('next').style = "background-color: #03cae4;"
+
+  }
+  else if(currNum-1 == 0 || currNum-1 == -1){
+    alert("Can't go back");
   }
 }
